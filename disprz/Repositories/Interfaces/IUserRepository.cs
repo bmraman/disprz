@@ -1,6 +1,6 @@
 ﻿using disprz.Model;
 
-namespace disprz.Data.Interfaces
+namespace disprz.Repositories.Interfaces
 {
     public interface IUserRepository
     {

@@ -1,5 +1,6 @@
 using disprz.Data;
-using disprz.Data.Interfaces;
+using disprz.Repositories;
+using disprz.Repositories.Interfaces;
 using disprz.Service;
 using disprz.Service.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -16,7 +17,7 @@ builder.Services.AddSwaggerGen();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddSingleton<DbConnectionFactory>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IService, Service>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]);

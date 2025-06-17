@@ -1,10 +1,9 @@
 ﻿using Dapper;
-using disprz.Data.Interfaces;
+using disprz.Data;
 using disprz.Model;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Reflection;
+using disprz.Repositories.Interfaces;
 
-namespace disprz.Data
+namespace disprz.Repositories
 {
     public class UserRepository : IUserRepository
     {

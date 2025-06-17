@@ -10,24 +10,24 @@ namespace disprz.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IService _service;
+        private readonly IUserService _userService;
 
-        public AuthController(IService service)
+        public AuthController(IUserService userService)
         {
-            _service = service;
+            _userService = userService;
         }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register(User user)
         {
-            await _service.RegisterAsync(user, user.PasswordHash);
+            await _userService.RegisterAsync(user, user.PasswordHash);
             return Ok("Registered successfully");
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginRequest req)
         {
-            var token = await _service.AuthenticateAsync(req.Email, req.Password);
+            var token = await _userService.AuthenticateAsync(req.Email, req.Password);
             if (token == null) return Unauthorized("Invalid credentials");
 
             return Ok(new { Token = token });
