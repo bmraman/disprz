@@ -20,12 +20,8 @@ namespace disprz.Service
         public async Task RegisterAsync(User user, string plainPassword)
         {
             var hasher = new PasswordHasher<object>();
-            user.Id = Guid.NewGuid();
             user.PasswordHash = hasher.HashPassword(null, plainPassword);
-            user.IsActive = true;
             user.Created = DateTime.UtcNow;
-            user.Updated = DateTime.UtcNow;
-
             await _repo.CreateAsync(user);
         }
 
