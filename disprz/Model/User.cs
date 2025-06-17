@@ -1,29 +1,37 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace disprz.Model
 {
+    [Table("Users")]
     public class User
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
+        public int Id { get; set; }
+        public Guid UserId { get; set; } = Guid.NewGuid();
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string? CompanyName { get; set; }
         public string Contact { get; set; }
+        public string Email { get; set; }
         public string PasswordHash { get; set; }
-        public UserTypeEnum UserType { get; set; } = UserTypeEnum.Default;
-        public bool IsActive { get; set; }
+        public string UserType { get; set; } = UserTypeEnum.Default.ToString();
+        public string Location { get; set; }
+        public string Designation { get; set; }
+        public bool IsActive { get; set; } = true;
         public DateTime Created { get; set; }
         public DateTime Updated { get; set; }
+
     }
 
     public enum UserTypeEnum
     {
         [Display(Name = "Default")]
-        Default = 0,
+        Default,
         [Display(Name = "Corporate")]
-        Corporate = 1,
+        Corporate,
         [Display(Name = "Consultant")]
-        Consultant = 2,
+        Consultant,
         [Display(Name = "Freelancer")]
-        Freelancer = 3
+        Freelancer
     }
 }
