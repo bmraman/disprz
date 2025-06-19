@@ -10,7 +10,7 @@ namespace disprz.Helpers
     {
         public static string GenerateToken(User user, IConfiguration config)
         {
-            var key = Encoding.UTF8.GetBytes(config["Jwt:Key"]);
+            var key = Encoding.UTF8.GetBytes(config["Jwt:Key"]!);
             var tokenHandler = new JwtSecurityTokenHandler();
 
             var tokenDescriptor = new SecurityTokenDescriptor
